@@ -18,11 +18,30 @@ body {
 .container {
   width: min(100% - 30px, 1280px);
   margin-inline: auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: none;
+}
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 45px;
 }
 
-
-
-
+.information-field {
+  height: 50px;
+  padding: 20px;
+}
+.contacts {
+  width: 400px;
+}
+.add-btn {
+  height: 50px;
+  width: 150px;
+  background: #32cd32;
+}
 
 
 
