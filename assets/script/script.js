@@ -63,7 +63,7 @@ function listContacts() {
     div.appendChild(p1);
     div.appendChild(p2);
     div.appendChild(p3);
-    grid.append(div);
+    grid.prepend(div);
     console.log(p1.innerText);
     console.log('test');
 
