@@ -8,7 +8,7 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 'use strict'
 
-let input = document.querySelector('.information-field');
+let input = document.querySelector('.contacts');
 let addButton = document.querySelector('.add-btn');
 let grid = document.querySelector('.grid');
 
@@ -38,8 +38,7 @@ class Contact {
 
 const contacts = [];
 
-addContact('Bob marly', 'winnipeg', 'bob@email.com');
-deleteContact(0);
+// addContact('Bob marly', 'winnipeg', 'bob@email.com');
 
 function addContact(name, city, email) {
   const contact = new Contact(name, city, email);
@@ -49,6 +48,7 @@ function addContact(name, city, email) {
 }
 
 function listContacts() {
+  for (let i = 0; i < 1; i++) {
     let div = document.createElement("div");
     div.className = contacts.length;
     let p1 = document.createElement("p");
@@ -57,7 +57,9 @@ function listContacts() {
     p1.className = 'p1';
     p2.className = 'p2';
     p3.className = 'p3';
-    p1.innerText = 'Testingggg';
+    p1.innerText = contacts[i].name;
+    p2.innerText = contacts[i].city;
+    p3.innerText = contacts[i].email;
     div.appendChild(p1);
     div.appendChild(p2);
     div.appendChild(p3);
@@ -65,18 +67,43 @@ function listContacts() {
     console.log(p1.innerText);
     console.log('test');
 
+  }
 }
-
 function deleteContact(num) {
+  let div = document.getElementsByClassName(num);
   delete contacts[num];
   console.log(contacts);
-  listContacts();
+  div.remove();
 }
 
+const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+};
+
 grid.addEventListener('click', function (event) {
-  let num = event.target.className;
-    infor.innerText = deleteContact(num-1);
+  let num = event.target;
+  let div = num.parentNode;
+  grid.removeChild(div);
 });
+
+addButton.addEventListener('click', () => {
+  console.log(input.value);
+  let userInput = []
+  userInput = input.value.toString().split(', ', 3);
+  console.log(`Array: ${userInput[0]}`);
+  let name = userInput[0].trim();
+  let city = userInput[1].trim();
+  let email = userInput[2].trim();
+
+  if (validateEmail(email)) { addContact(name, city, email) }
+  else { throw "Invalid input" };
+
+
+});
+
+
 
 
 
