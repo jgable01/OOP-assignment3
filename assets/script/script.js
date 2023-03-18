@@ -11,6 +11,7 @@
 let input = document.querySelector('.contacts');
 let addButton = document.querySelector('.add-btn');
 let grid = document.querySelector('.grid');
+let cont = document.querySelector('.container');
 
 class Contact {
   #name;
@@ -83,9 +84,12 @@ const validateEmail = (email) => {
 };
 
 grid.addEventListener('click', function (event) {
-  let num = event.target;
-  let div = num.parentNode;
-  grid.removeChild(div);
+  if(event.target != grid) {
+    console.log(event.target);
+    event.stopPropagation();
+    let num = event.target;
+    grid.removeChild(num);
+  }
 });
 
 addButton.addEventListener('click', () => {
@@ -99,8 +103,6 @@ addButton.addEventListener('click', () => {
 
   if (validateEmail(email)) { addContact(name, city, email) }
   else { throw "Invalid input" };
-
-
 });
 
 
