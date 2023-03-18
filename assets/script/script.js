@@ -42,10 +42,13 @@ const contacts = [];
 // addContact('Bob marly', 'winnipeg', 'bob@email.com');
 
 function addContact(name, city, email) {
-  const contact = new Contact(name, city, email);
-  contacts.unshift(contact);
-  listContacts();
-  console.log(contacts);
+  if(contacts.length < 20) {
+    const contact = new Contact(name, city, email);
+    contacts.unshift(contact);
+    listContacts();
+    console.log(contacts);
+  }
+
 }
 
 function listContacts() {
