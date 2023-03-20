@@ -1,4 +1,4 @@
 Assignment 3
 
 
-https://github.com/jgable01/OOP-assignment3
+https://jgable01.github.io/OOP-assignment3
