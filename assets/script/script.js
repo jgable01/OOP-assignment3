@@ -13,6 +13,7 @@ let addButton = document.querySelector('.add-btn');
 let grid = document.querySelector('.grid');
 let cont = document.querySelector('.container');
 
+
 class Contact {
   #name;
   #city;
@@ -42,7 +43,7 @@ const contacts = [];
 // addContact('Bob marly', 'winnipeg', 'bob@email.com');
 
 function addContact(name, city, email) {
-  if(contacts.length < 20) {
+  if (contacts.length < 50) {
     const contact = new Contact(name, city, email);
     contacts.unshift(contact);
     listContacts();
@@ -54,16 +55,18 @@ function addContact(name, city, email) {
 function listContacts() {
   for (let i = 0; i < 1; i++) {
     let div = document.createElement("div");
-    div.className = contacts.length;
+    div.classList.add(contacts.length);
+    div.classList.add('div')
+    console.log(`Class name: ${div.classList}`)
     let p1 = document.createElement("p");
     let p2 = document.createElement("p");
     let p3 = document.createElement("p");
     p1.className = 'p1';
     p2.className = 'p2';
     p3.className = 'p3';
-    p1.innerText = contacts[i].name;
-    p2.innerText = contacts[i].city;
-    p3.innerText = contacts[i].email;
+    p1.innerHTML = `<b>Name:</b> ${contacts[i].name}`;
+    p2.innerHTML = `<b>City:</b> ${contacts[i].city}`;
+    p3.innerHTML = `<b>Email:</b> ${contacts[i].email}`;
     div.appendChild(p1);
     div.appendChild(p2);
     div.appendChild(p3);
@@ -71,29 +74,19 @@ function listContacts() {
     console.log(p1.innerText);
     console.log('test');
 
-  }
-}
-function deleteContact(num) {
-  let div = document.getElementsByClassName(num);
-  delete contacts[num];
-  console.log(contacts);
-  div.remove();
-}
+    div.onclick = () => {
+      grid.removeChild(div);
+      contacts.splice(div.className, 1);
+    }
 
+  }
+
+}
 const validateEmail = (email) => {
   return email.match(
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 };
-
-grid.addEventListener('click', function (event) {
-  if(event.target != grid) {
-    console.log(event.target);
-    event.stopPropagation();
-    let num = event.target;
-    grid.removeChild(num);
-  }
-});
 
 addButton.addEventListener('click', () => {
   console.log(input.value);
