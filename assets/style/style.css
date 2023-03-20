@@ -22,7 +22,6 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: none;
 }
 
 h1 {
@@ -44,6 +43,7 @@ h1 {
 
 .information {
   padding: 15px;
+  margin-left: -15px;
   color: #fff;
 }
 
@@ -93,7 +93,7 @@ h1 {
   border-right: 1px solid #bb0d00;
 }
 
-@media (max-width: 1420px) {
+@media (max-width: 1220px) {
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -105,14 +105,23 @@ h1 {
 
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
 
   .grid {
     grid-template-columns: repeat(1, 1fr);
   }
 
   .div {
-    width: 320px;
+    width: 300px;
+  }
+
+  .information-field {
+    width: 87%;
+    align-items: center;
+  }
+
+  .add-btn {
+    margin-top: 15px;
   }
 
 }
