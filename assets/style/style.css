@@ -1,4 +1,5 @@
 @import url(reset.css);
+
 :root {
   --app-bg: #f2f3f4;
   --app-bg-blue: #3487f3;
@@ -23,6 +24,7 @@ body {
   justify-content: center;
   align-items: none;
 }
+
 h1 {
   text-align: center;
   color: #fff;
@@ -35,9 +37,11 @@ h1 {
   padding: 20px;
   font-size: 20px;
 }
+
 .contacts {
   width: 400px;
 }
+
 .add-btn {
   height: 50px;
   width: 150px;
@@ -48,9 +52,11 @@ h1 {
   font-size: 20px;
   cursor: pointer;
 }
+
 .add-btn:hover {
   background: #bb0d00;
 }
+
 .grid {
   width: 50%;
   height: 50%;
@@ -64,7 +70,7 @@ h1 {
 }
 
 
-.grid > div {
+.grid>div {
   border-radius: 15px;
   background-color: #696969;
   padding: 5px;
@@ -74,16 +80,16 @@ h1 {
   text-align: center;
 }
 
-.grid > div:hover {
+.grid>div:hover {
   cursor: pointer;
-border-top: 1px solid #bb0d00;
-border-bottom: 1px solid #bb0d00;
-border-left: 1px solid #bb0d00;
-border-right: 1px solid #bb0d00;
+  border-top: 1px solid #bb0d00;
+  border-bottom: 1px solid #bb0d00;
+  border-left: 1px solid #bb0d00;
+  border-right: 1px solid #bb0d00;
 }
 
 @media (max-width: 720px) {
- 
+
   .grid {
     grid-template-columns: 1fr;
   }
@@ -91,9 +97,5 @@ border-right: 1px solid #bb0d00;
   .div {
     width: 280px;
   }
-  
+
 }
-
-
-
-
