@@ -93,14 +93,26 @@ h1 {
   border-right: 1px solid #bb0d00;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1420px) {
 
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .div {
     width: 280px;
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .div {
+    width: 320px;
   }
 
 }
