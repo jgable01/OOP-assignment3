@@ -12,7 +12,7 @@ let input = document.querySelector('.contacts');
 let addButton = document.querySelector('.add-btn');
 let grid = document.querySelector('.grid');
 let cont = document.querySelector('.container');
-let contactNum = document.querySelector('.information');
+let info = document.querySelector('.information');
 
 
 class Contact {
@@ -48,7 +48,7 @@ function addContact(name, city, email) {
     const contact = new Contact(name, city, email);
     contacts.unshift(contact);
     listContacts();
-    contactNum.innerHTML = `Number of contacts: ${contacts.length}`;
+    info.innerHTML = `Number of contacts: ${contacts.length}`;
   }
 }
 
@@ -74,7 +74,7 @@ function listContacts() {
     div.onclick = () => {
       grid.removeChild(div);
       contacts.splice(div.className, 1);
-      contactNum.innerHTML = `Number of contacts: ${contacts.length}`;
+      info.innerHTML = `Number of contacts: ${contacts.length}`;
     }
 
   }
@@ -87,14 +87,23 @@ const validateEmail = (email) => {
 };
 
 addButton.addEventListener('click', () => {
-  let userInput = []
-  userInput = input.value.toString().split(', ', 3);
-  let name = userInput[0].trim();
-  let city = userInput[1].trim();
-  let email = userInput[2].trim();
+  try {
+    let userInput = []
+    userInput = input.value.toString().split(', ', 3);
+    let name = userInput[0].trim();
+    let city = userInput[1].trim();
+    let email = userInput[2].trim();
 
-  if (validateEmail(email)) { addContact(name, city, email) }
-  else { throw "Invalid input" };
+    if (validateEmail(email)) { addContact(name, city, email) }
+    else {
+      info.innerHTML = 'Invalid input - please use correct syntax';
+      throw "Invalid input"
+    }
+  } catch (err) {
+    info.innerHTML = 'Invalid input - please use correct syntax';
+    throw "Invalid input"
+  }
+
 });
 
 
