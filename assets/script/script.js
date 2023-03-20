@@ -12,6 +12,7 @@ let input = document.querySelector('.contacts');
 let addButton = document.querySelector('.add-btn');
 let grid = document.querySelector('.grid');
 let cont = document.querySelector('.container');
+let contactNum = document.querySelector('.information');
 
 
 class Contact {
@@ -47,9 +48,8 @@ function addContact(name, city, email) {
     const contact = new Contact(name, city, email);
     contacts.unshift(contact);
     listContacts();
-    console.log(contacts);
+    contactNum.innerHTML = `Number of contacts: ${contacts.length}`;
   }
-
 }
 
 function listContacts() {
@@ -57,7 +57,6 @@ function listContacts() {
     let div = document.createElement("div");
     div.classList.add(contacts.length);
     div.classList.add('div')
-    console.log(`Class name: ${div.classList}`)
     let p1 = document.createElement("p");
     let p2 = document.createElement("p");
     let p3 = document.createElement("p");
@@ -71,12 +70,11 @@ function listContacts() {
     div.appendChild(p2);
     div.appendChild(p3);
     grid.prepend(div);
-    console.log(p1.innerText);
-    console.log('test');
 
     div.onclick = () => {
       grid.removeChild(div);
       contacts.splice(div.className, 1);
+      contactNum.innerHTML = `Number of contacts: ${contacts.length}`;
     }
 
   }
@@ -89,10 +87,8 @@ const validateEmail = (email) => {
 };
 
 addButton.addEventListener('click', () => {
-  console.log(input.value);
   let userInput = []
   userInput = input.value.toString().split(', ', 3);
-  console.log(`Array: ${userInput[0]}`);
   let name = userInput[0].trim();
   let city = userInput[1].trim();
   let email = userInput[2].trim();
